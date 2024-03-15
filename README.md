@@ -1,4 +1,4 @@
-![Captura de Tela da Aplicação](assets/screenshot.png)
+![Captura de Tela da Aplicação](./src/assets/screenshot.png)
 
 Hierarquia de Colaboradores e Gerenciamento de Senhas
 
