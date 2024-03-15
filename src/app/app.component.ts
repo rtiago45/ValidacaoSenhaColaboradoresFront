@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   ) {
     this.loginForm = this.fb.group({
       nome: ['', [Validators.required, Validators.minLength(4)]],
-      senha: ['', [Validators.required, Validators.minLength(8)]],
+      senha: ['', [Validators.required, Validators.minLength(4)]],
       cargo: ['', [Validators.required]],
     });
   }
@@ -32,7 +32,6 @@ export class AppComponent implements OnInit {
     this.colaboradorService.getAllColaboradores().subscribe(
       (response: any) => {
         this.colaboradores = response;
-        // Após carregar os colaboradores, calcula a força da senha de cada um
         this.calcularForcaSenha();
       },
       (error: any) => {
@@ -60,7 +59,7 @@ export class AppComponent implements OnInit {
       this.colaboradorService.createColaborador({ nome, senha, cargo }).subscribe(
         (response: any) => {
           console.log('Colaborador criado com sucesso:', response);
-          this.carregarColaboradores(); // Atualiza a lista de colaboradores após a criação
+          this.carregarColaboradores();
         },
         (error: any) => {
           console.error('Erro ao criar colaborador:', error);
@@ -73,26 +72,27 @@ export class AppComponent implements OnInit {
   }
 
   calcularForcaSenha() {
-    for (let colaborador of this.colaboradores) {
-      const { senha, nome, cargo } = colaborador;
-      this.colaboradorService.calcularForcaSenha(senha, nome, cargo).subscribe(
-        (response: any) => {
-          if (response && response.nivelForcaSenha) {
-            console.log();
-
-            colaborador.senhaForca = response.nivelForcaSenha;
-          } else {
-            console.error('Resposta inválida do serviço de força de senha');
-            colaborador.senhaForca = 'Desconhecido';
-          }
-        },
-        (error: any) => {
-          console.error('Erro ao calcular a força da senha:', error);
-          colaborador.senhaForca = 'Erro';
+      for (let colaborador of this.colaboradores) {
+        const { senha, nome, cargo, forcaSenha } = colaborador;
+              const pontuacao: number = forcaSenha;
+              colaborador.senhaForca = this.obterNivelForcaSenha(pontuacao);
         }
-      );
     }
-  }
 
+
+
+  obterNivelForcaSenha(pontuacao: number): string {
+    if (pontuacao >= 110) {
+      return "FORTE";
+    }
+    if (pontuacao >= 90) {
+      return "BOA";
+    }
+    if (pontuacao >= 65) {
+      return "MEDIANA";
+    }
+    return "RUIM";
+
+  }
 
 }

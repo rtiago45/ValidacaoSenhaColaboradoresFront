@@ -1,11 +1,12 @@
-<div style = "display: flex; align-items: center; justify-content: center; height:100vh;">
+<div>
   <form [formGroup]="loginForm"  (submit)="onSubmit()">
     <input type="text" placeholder="Nome" formControlName="nome"/>
     <select formControlName="cargo">
-      <option value="dev">Desenvolvedor</option>
-      <option value="analista">Analista</option>
-      <option value="gerente">Gerente</option>
-      <option value="rh">Recursos Humanos</option>
+      <option value="" disabled selected hidden>Selecione uma opção</option>
+      <option value="Desenvolvedor">Desenvolvedor</option>
+      <option value="Analista">Analista</option>
+      <option value="Gerente">Gerente</option>
+      <option value="RH">Recursos Humanos</option>
     </select>
     @if (userName?.invalid && (userName?.dirty || userName?.touched)) {
       @if (userName?.errors?.['required']) {
@@ -26,7 +27,7 @@
 
        @if (password?.errors?.['minlength']) {
         <span>
-          Senha precisa ter ao menos 8 caracteres.
+          Senha precisa ter ao menos 4 caracteres.
          </span>
        }
 
@@ -37,12 +38,21 @@
 
   <div class="container-form" *ngIf="colaboradores.length > 0">
     <h2>Lista de Colaboradores</h2>
-    <ul class="lista-colaboradores">
-      <li *ngFor="let colaborador of colaboradores" class="colaborador-item">
-        <strong>Nome:</strong> {{ colaborador.nome }} <br>
-        <strong>Cargo:</strong> {{ colaborador.cargo }} <br>
-        <strong>Nível da Senha:</strong> {{ colaborador.senhaForca }}<br><br>
-      </li>
-    </ul>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Cargo</th>
+          <th>Nível da Senha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let colaborador of colaboradores" class="colaborador-item">
+          <td>{{ colaborador.nome }}</td>
+          <td>{{ colaborador.cargo }}</td>
+          <td>{{ colaborador.senhaForca }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

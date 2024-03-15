@@ -18,8 +18,4 @@ export class ColaboradorService {
   getAllColaboradores(): Observable<any> {
     return this.http.get(`${this.baseUrl}/colaboradores`);
   }
-
-  calcularForcaSenha(senha: string, nome: string, cargo: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/colaborador/senha/forca`, { senha, nome, cargo });
-  }
 }

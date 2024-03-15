@@ -1,28 +1,40 @@
-# AngularProjectNetDeal
+![Captura de Tela da Aplicação](assets/screenshot.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+Hierarquia de Colaboradores e Gerenciamento de Senhas
 
-## Development server
+Este é um aplicativo front-end desenvolvido em Angular que permite criar, visualizar e gerenciar a hierarquia de colaboradores dentro de uma empresa, juntamente com suas respectivas senhas. O aplicativo também fornece uma funcionalidade para visualizar a força das senhas dos colaboradores.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Funcionalidades
+Cadastro de Colaboradores: Permite cadastrar novos colaboradores na hierarquia da empresa, especificando seus dados e senha.
 
-## Code scaffolding
+Visualização da Hierarquia: Oferece uma visualização hierárquica da estrutura de colaboradores na empresa.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Força da Senha: Calcula e exibe a força da senha de cada colaborador, permitindo avaliar a segurança das senhas utilizadas.
 
-## Build
+Como Usar
+Instalação das Dependências
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Antes de iniciar, certifique-se de instalar todas as dependências necessárias. Execute o seguinte comando no terminal:
 
-## Running unit tests
+Copy code
+npm install
+Execução da Aplicação
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Para iniciar a aplicação, utilize o seguinte comando:
 
-## Running end-to-end tests
+Copy code
+ng serve
+Acesse a aplicação em http://localhost:4200.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Utilização da Aplicação
 
-## Further help
+Na página inicial, você encontrará um formulário para cadastrar novos colaboradores. Preencha os campos necessários e pressione o botão "Enviar" para adicionar um novo colaborador à hierarquia.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# ValidacaoSenhaColaboradoresFront
+Navegue para a seção de visualização para ver a hierarquia atualizada e a força das senhas dos colaboradores.
+
+Tecnologias Utilizadas
+Angular
+HTML/CSS
+
+Autor
+Tiago Rodrigues
